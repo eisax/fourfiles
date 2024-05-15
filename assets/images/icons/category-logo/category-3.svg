@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512" xml:space="preserve">
+<circle style="fill:#88C5CC;" cx="256" cy="256" r="256"/>
+<path style="fill:#CC584C;" d="M176,392c0,8.8-7.2,16-16,16H72c-8.8,0-16-7.2-16-16V108c0-8.8,7.2-16,16-16h88c8.8,0,16,7.2,16,16
+	V392z"/>
+<rect x="56" y="120" style="fill:#CCCCCC;" width="120" height="168"/>
+<g>
+	<rect x="80" y="132" style="fill:#E6E6E6;" width="72" height="12"/>
+	<rect x="80" y="148" style="fill:#E6E6E6;" width="72" height="12"/>
+	<rect x="80" y="164" style="fill:#E6E6E6;" width="72" height="12"/>
+	<circle style="fill:#E6E6E6;" cx="116" cy="344" r="36"/>
+</g>
+<g>
+	<circle style="fill:#263740;" cx="116" cy="344" r="28"/>
+	<path style="fill:#263740;" d="M304,392c0,8.8-7.2,16-16,16h-88c-8.8,0-16-7.2-16-16V108c0-8.8,7.2-16,16-16h88c8.8,0,16,7.2,16,16
+		V392z"/>
+</g>
+<rect x="184" y="120" style="fill:#E6E6E6;" width="120" height="168"/>
+<g>
+	<rect x="208" y="132" style="fill:#B3B3B3;" width="72" height="12"/>
+	<rect x="208" y="148" style="fill:#B3B3B3;" width="72" height="12"/>
+	<rect x="208" y="164" style="fill:#B3B3B3;" width="72" height="12"/>
+</g>
+<circle style="fill:#E6E6E6;" cx="244" cy="344" r="36"/>
+<g>
+	<circle style="fill:#263740;" cx="244" cy="344" r="28"/>
+	<path style="fill:#263740;" d="M478.58,371.192c1.784,8.616-3.796,17.128-12.416,18.916L380,408
+		c-8.616,1.788-17.128-3.796-18.916-12.416l-57.736-278.068c-1.784-8.616,3.796-17.132,12.412-18.92l86.164-17.892
+		c8.616-1.788,17.132,3.796,18.92,12.416L478.58,371.192z"/>
+</g>
+<rect x="321.623" y="115.294" transform="matrix(0.9791 -0.2033 0.2033 0.9791 -32.5466 81.7466)" style="fill:#E6E6E6;" width="119.994" height="167.993"/>
+<g>
+	
+		<rect x="332.2" y="128.682" transform="matrix(0.9791 -0.2033 0.2033 0.9791 -19.6917 77.6685)" style="fill:#B3B3B3;" width="71.995" height="12"/>
+	
+		<rect x="335.477" y="144.348" transform="matrix(0.9791 -0.2033 0.2033 0.9791 -22.8079 78.6622)" style="fill:#B3B3B3;" width="71.999" height="11.996"/>
+	
+		<rect x="338.724" y="160.01" transform="matrix(0.9791 -0.2033 0.2033 0.9791 -25.9246 79.6496)" style="fill:#B3B3B3;" width="71.999" height="12"/>
+</g>
+<circle style="fill:#E6E6E6;" cx="410.08" cy="336.4" r="36"/>
+<circle style="fill:#263740;" cx="410.08" cy="336.4" r="28"/>
+<path style="fill:#99602E;" d="M50.028,408C96.656,471.08,171.54,512,256,512s159.344-40.92,205.972-104H50.028z"/>
+</svg>

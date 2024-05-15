@@ -1,0 +1,55 @@
+name: fourfiles
+description: "A new Flutter project."
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5
+  shared_preferences: ^2.2.0
+  lottie: ^2.5.0
+  font_awesome_flutter: ^10.5.0
+  flutter_svg: ^2.0.10+1
+  device_preview: ^1.1.0
+  image_picker: ^1.0.7
+  # geocoding: ^2.2.0
+  # geolocator: ^11.0.0
+  geolocator: ^8.0.0
+  geocoding: ^2.0.0
+  shimmer: ^3.0.0
+  connectivity_plus: ^2.3.8
+  dio: ^5.4.1
+  http: ^1.2.0
+  floor: ^1.4.0
+  flutter_svg_provider: ^1.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  floor_generator: ^1.4.0
+  build_runner: ^2.1.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/language/
+    - assets/images/
+    - assets/images/icons/
+    - assets/images/icons/category-logo/
+    - assets/images/icons/formats/
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/font/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/font/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/font/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/font/Roboto-Black.ttf
+          weight: 900
