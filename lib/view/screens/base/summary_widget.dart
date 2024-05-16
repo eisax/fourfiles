@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fourfiles/util/dimensiona.dart';
 import 'package:fourfiles/util/images.dart';
+import 'package:fourfiles/view/screens/file/view_file_screen.dart';
 
 enum WidgetType { grid, block, list }
 
@@ -23,7 +24,12 @@ class _SummaryWidgetState extends State<SummaryWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ViewFileScreen()),
+        );
+      },
       child: AnimatedContainer(
         width: widget.itemWidth,
         height: widget.itemHeight,
@@ -408,7 +414,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
                                 ),
                                 Container(
                                   padding: EdgeInsets.all(
-                                    Dimensions.paddingSizeSmall,
+                                    Dimensions.paddingSizeExtraSmall,
                                   ),
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
