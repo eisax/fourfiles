@@ -190,7 +190,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
           ),
         ),
       ),
-       body: SafeArea(
+      body: SafeArea(
         child: widgetType == WidgetType.grid
             ? SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -205,17 +205,18 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                           2);
 
                       return Wrap(
-                          direction: Axis.horizontal,
-                          runSpacing: Dimensions.paddingSizeDefault,
-                          alignment: WrapAlignment.spaceBetween,
-                          runAlignment: WrapAlignment.spaceEvenly,
-                          crossAxisAlignment: WrapCrossAlignment.end,
-                          children: ["", "", ""]
-                              .map((e) => SummaryWidget(
-                                    itemWidth: cardWidth,
-                                    widgetType: WidgetType.grid,
-                                  ))
-                              .toList());
+                        direction: Axis.horizontal,
+                        runSpacing: Dimensions.paddingSizeDefault,
+                        alignment: WrapAlignment.spaceBetween,
+                        runAlignment: WrapAlignment.spaceEvenly,
+                        crossAxisAlignment: WrapCrossAlignment.end,
+                        children: ["", "", ""]
+                            .map((e) => SummaryWidget(
+                                  itemWidth: cardWidth,
+                                  widgetType: WidgetType.grid,
+                                ))
+                            .toList(),
+                      );
                     },
                   ),
                 ),

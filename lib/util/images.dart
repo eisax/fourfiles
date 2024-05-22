@@ -102,6 +102,7 @@ class Images {
   static const String star = 'assets/images/icons/star.svg';
   static const String more = 'assets/images/icons/more.svg';
   static const String back = 'assets/images/icons/back.svg';
+  static const String starOutline = 'assets/images/icons/star-outline.svg';
   
 
 }
