@@ -29,32 +29,58 @@ class Images {
   static const String cat7 = 'assets/images/icons/category-logo/category-7.svg';
   static const String cat8 = 'assets/images/icons/category-logo/category-8.svg';
   static const String cat9 = 'assets/images/icons/category-logo/category-9.svg';
-  static const String cat10 = 'assets/images/icons/category-logo/category-10.svg';
-  static const String cat11 = 'assets/images/icons/category-logo/category-11.svg';
-  static const String cat12 = 'assets/images/icons/category-logo/category-12.svg';
-  static const String cat13 = 'assets/images/icons/category-logo/category-13.svg';
-  static const String cat14 = 'assets/images/icons/category-logo/category-14.svg';
-  static const String cat15 = 'assets/images/icons/category-logo/category-15.svg';
-  static const String cat16 = 'assets/images/icons/category-logo/category-16.svg';
-  static const String cat17 = 'assets/images/icons/category-logo/category-17.svg';
-  static const String cat18 = 'assets/images/icons/category-logo/category-18.svg';
-  static const String cat19 = 'assets/images/icons/category-logo/category-19.svg';
-  static const String cat20 = 'assets/images/icons/category-logo/category-20.svg';
-  static const String cat21 = 'assets/images/icons/category-logo/category-21.svg';
-  static const String cat22 = 'assets/images/icons/category-logo/category-22.svg';
-  static const String cat23 = 'assets/images/icons/category-logo/category-23.svg';
-  static const String cat24 = 'assets/images/icons/category-logo/category-24.svg';
-  static const String cat25 = 'assets/images/icons/category-logo/category-25.svg';
-  static const String cat26 = 'assets/images/icons/category-logo/category-26.svg';
-  static const String cat27 = 'assets/images/icons/category-logo/category-27.svg';
-  static const String cat28 = 'assets/images/icons/category-logo/category-28.svg';
-  static const String cat29 = 'assets/images/icons/category-logo/category-29.svg';
-  static const String cat30 = 'assets/images/icons/category-logo/category-30.svg';
-  static const String cat31 = 'assets/images/icons/category-logo/category-31.svg';
-  static const String cat32 = 'assets/images/icons/category-logo/category-32.svg';
-  static const String cat33 = 'assets/images/icons/category-logo/category-33.svg';
-  static const String cat34 = 'assets/images/icons/category-logo/category-34.svg';
-  static const String cat35 = 'assets/images/icons/category-logo/category-35.svg';
+  static const String cat10 =
+      'assets/images/icons/category-logo/category-10.svg';
+  static const String cat11 =
+      'assets/images/icons/category-logo/category-11.svg';
+  static const String cat12 =
+      'assets/images/icons/category-logo/category-12.svg';
+  static const String cat13 =
+      'assets/images/icons/category-logo/category-13.svg';
+  static const String cat14 =
+      'assets/images/icons/category-logo/category-14.svg';
+  static const String cat15 =
+      'assets/images/icons/category-logo/category-15.svg';
+  static const String cat16 =
+      'assets/images/icons/category-logo/category-16.svg';
+  static const String cat17 =
+      'assets/images/icons/category-logo/category-17.svg';
+  static const String cat18 =
+      'assets/images/icons/category-logo/category-18.svg';
+  static const String cat19 =
+      'assets/images/icons/category-logo/category-19.svg';
+  static const String cat20 =
+      'assets/images/icons/category-logo/category-20.svg';
+  static const String cat21 =
+      'assets/images/icons/category-logo/category-21.svg';
+  static const String cat22 =
+      'assets/images/icons/category-logo/category-22.svg';
+  static const String cat23 =
+      'assets/images/icons/category-logo/category-23.svg';
+  static const String cat24 =
+      'assets/images/icons/category-logo/category-24.svg';
+  static const String cat25 =
+      'assets/images/icons/category-logo/category-25.svg';
+  static const String cat26 =
+      'assets/images/icons/category-logo/category-26.svg';
+  static const String cat27 =
+      'assets/images/icons/category-logo/category-27.svg';
+  static const String cat28 =
+      'assets/images/icons/category-logo/category-28.svg';
+  static const String cat29 =
+      'assets/images/icons/category-logo/category-29.svg';
+  static const String cat30 =
+      'assets/images/icons/category-logo/category-30.svg';
+  static const String cat31 =
+      'assets/images/icons/category-logo/category-31.svg';
+  static const String cat32 =
+      'assets/images/icons/category-logo/category-32.svg';
+  static const String cat33 =
+      'assets/images/icons/category-logo/category-33.svg';
+  static const String cat34 =
+      'assets/images/icons/category-logo/category-34.svg';
+  static const String cat35 =
+      'assets/images/icons/category-logo/category-35.svg';
 
   //document types default image
   static const String threeds = 'assets/images/icons/formats/3ds.svg';
@@ -103,6 +129,24 @@ class Images {
   static const String more = 'assets/images/icons/more.svg';
   static const String back = 'assets/images/icons/back.svg';
   static const String starOutline = 'assets/images/icons/star-outline.svg';
-  
+  static const String save = 'assets/images/icons/save.svg';
+  static const String addcircle = 'assets/images/icons/add-circle-outlined.svg';
+  static const String touch = 'assets/images/icons/touch.svg';
+  static const String scroll = 'assets/images/icons/scroll.svg';
+  static const String delete = 'assets/images/icons/delete.svg';
+  static const String camera = 'assets/images/icons/camera.svg';
+  static const String gallery = 'assets/images/icons/gallery.svg';
+  static const String documentFile = 'assets/images/icons/document-file.svg';
 
+  static const String about = 'assets/images/icons/more/about.svg';
+  static const String backup = 'assets/images/icons/more/backup.svg';
+  static const String category = 'assets/images/icons/more/category.svg';
+  static const String lock = 'assets/images/icons/more/lock.svg';
+  static const String moresettings = 'assets/images/icons/more/settings.svg';
+  static const String share = 'assets/images/icons/more/share.svg';
+  static const String shieldInfo = 'assets/images/icons/more/shield-info.svg';
+  static const String starShine = 'assets/images/icons/more/star-shine.svg';
+  static const String termsOfService = 'assets/images/icons/more/terms-of-service.svg';
 }
+
+

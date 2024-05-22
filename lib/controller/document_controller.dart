@@ -1,21 +1,53 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fourfiles/data/api/api_client.dart';
+import 'package:fourfiles/data/model/category_model.dart';
 import 'package:fourfiles/data/model/response/survey.dart';
+import 'package:fourfiles/util/images.dart';
 import 'package:get/get.dart';
 import 'package:fourfiles/data/repository/survey_repo.dart';
 import 'package:fourfiles/view/widgets/dialog_helper.dart';
 import 'package:fourfiles/view/widgets/error_widget.dart';
 import 'package:fourfiles/view/widgets/loading_widget.dart';
+import 'package:image_picker/image_picker.dart';
 
-class SurveyController extends GetxController implements GetxService {
+class DocumentController extends GetxController implements GetxService {
   SurveyRepo surveyRepo;
   final ApiClient apiClient;
-  SurveyController({
+  DocumentController({
     required this.apiClient,
     required this.surveyRepo,
   });
+
+  final List<CategoryModel> _categories = [
+    CategoryModel(icon: Images.cat1, id: 0, title: 'Uncategorized', route: ''),
+    CategoryModel(
+        icon: Images.cat2, id: 1, title: 'Driving License', route: ''),
+    CategoryModel(icon: Images.cat3, id: 2, title: 'Insurance', route: ''),
+    CategoryModel(icon: Images.cat4, id: 2, title: 'Passport', route: ''),
+    CategoryModel(icon: Images.cat5, id: 2, title: 'Invoice', route: ''),
+    CategoryModel(icon: Images.cat6, id: 2, title: 'Personal Card', route: ''),
+    CategoryModel(icon: Images.cat7, id: 2, title: 'Bank', route: ''),
+    CategoryModel(icon: Images.cat8, id: 2, title: 'Medical', route: ''),
+    CategoryModel(icon: Images.cat9, id: 2, title: 'Business Card', route: ''),
+    CategoryModel(icon: Images.cat10, id: 2, title: 'Contract', route: ''),
+    CategoryModel(icon: Images.cat11, id: 2, title: 'Product', route: ''),
+    CategoryModel(
+        icon: Images.cat12, id: 2, title: 'Electricity/Gas', route: ''),
+    CategoryModel(icon: Images.cat13, id: 2, title: 'Bills', route: ''),
+  ];
+  List<CategoryModel> get categories => _categories;
+
+  CategoryModel? _selectedCategory;
+  CategoryModel? get selectedCategory => _selectedCategory;
+  set selectedCategory(CategoryModel? category) {
+    _selectedCategory = category;
+  }
+
+  final List<File> _documentimages = [];
+  List<File> get documentimages => _documentimages;
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
@@ -25,6 +57,26 @@ class SurveyController extends GetxController implements GetxService {
 
   SurveyModel _mysurvey = SurveyModel();
   SurveyModel get mysurvey => _mysurvey;
+
+  Future<void> pickImage({bool isCamera = false}) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(
+        source: isCamera ? ImageSource.camera : ImageSource.gallery);
+    if (pickedFile != null) {
+      _documentimages.add(File(pickedFile.path));
+      update();
+    }
+  }
+
+  selectCategory(CategoryModel selectedCategory) {
+    _selectedCategory = selectedCategory;
+    update();
+  }
+
+  Future<void> deleteImage(File image) async {
+    _documentimages.remove(image);
+    update();
+  }
 
   Future<void> emptySurvey() async {
     _mysurvey = SurveyModel();
@@ -158,7 +210,7 @@ class SurveyController extends GetxController implements GetxService {
       {required int id}) async {
     try {
       _mysurvey = await surveyRepo.getSurveyOffline(id) ?? _mysurvey;
-     
+
       update();
       return true;
     } catch (e) {

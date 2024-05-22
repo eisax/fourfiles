@@ -1,3 +1,5 @@
+import 'package:fourfiles/view/screens/more/widget/category_types_screen.dart';
+import 'package:fourfiles/view/screens/more/widget/create_category_screen.dart';
 import 'package:get/get.dart';
 import 'package:fourfiles/view/screens/mainnavigation/navigation_bar_screen.dart';
 import 'package:fourfiles/view/screens/auth/widgets/signinscreen.dart';
@@ -10,38 +12,18 @@ class RouteHelper {
   static const String auth = '/auth';
   static const String register = '/register';
   static const String dashboard = '/dashboard';
-  static const String surveyslist = '/surveyslist';
-  static const String addsurveyquestion = '/addsurveyquestion';
-  static const String createsurvey = '/createsurvey';
-  static const String profile = '/profile';
-  static const String createsurveydashboard = '/createsurveydashboard';
-  static const String conductsurvey = '/conductsurvey';
 
-  static const String sharesurvey = '/sharesurvey';
-  static const String viewsurveyform = '/viewsurveyform';
-  static const String viewsurveyresponses = '/viewsurveyresponses';
-  static const String collectsurveyresponses = '/collectsurveyresponses';
+  static const String categorytypelist = '/categorytypelist';
+  static const String createcategory = '/createcategory';
 
   static getInitialRoute() => initial;
   static getSplashRoute() => splash;
   static getAuthRoute(String name) => '$auth?name=$name';
   static getRegisterRoute(String name) => '$register?name=$name';
   static getDashboardRoute(String name) => '$dashboard?name=$name';
-  static getsurveyslistRoute(String name) => '$surveyslist?name=$name';
-  static getAddsurveyquestionRoute(String name) =>
-      '$addsurveyquestion?name=$name';
-  static getCreatesurveyRoute(String name) => '$createsurvey?name=$name';
-  static getProfileRoute(String name) => '$profile?name=$name';
-  static getCreateSurveyDashboardRoute(String name) =>
-      '$createsurveydashboard?name=$name';
-  static getConductSurveyRoute(String name) => '$conductsurvey?name=$name';
 
-  static getCollectSurveyResponsesRoute(String name) =>
-      '$collectsurveyresponses?name=$name';
-  static getShareSurveyResponsesRoute(String name) =>
-      '$viewsurveyresponses?name=$name';
-  static getViewSurveyFormRoute(String name) => '$viewsurveyform?name=$name';
-  static getShareSurveyFormRoute(String name) => '$sharesurvey?name=$name';
+  static getCategoryTypeListRoute(String name) => '$dashboard?name=$name';
+  static getCreateCatetoryRoute(String name) => '$createcategory?name=$name';
 
   static List<GetPage> routes = [
     GetPage(
@@ -67,6 +49,18 @@ class RouteHelper {
     GetPage(
       name: dashboard,
       page: () => const MainNavigationBar(),
+      transition: Transition.cupertinoDialog,
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: categorytypelist,
+      page: () => const CategoryTypesListScreen(),
+      transition: Transition.cupertinoDialog,
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: createcategory,
+      page: () => const CreateCategoryScreen(),
       transition: Transition.cupertinoDialog,
       transitionDuration: const Duration(milliseconds: 300),
     ),
