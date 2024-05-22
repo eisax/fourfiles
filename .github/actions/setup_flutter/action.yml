@@ -1,0 +1,22 @@
+name: 'Setup Flutter'
+description: 'Set up your GitHub Actions workflow with a specific version of Flutter'
+inputs:
+  flutter-version:
+    description: 'The version of Flutter to use'
+    required: true
+    default: '3.7.7'
+  channel:
+    description: 'The channel of Flutter to use'
+    required: false
+    default: 'master'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Clone Flutter repository
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: ${{ inputs.flutter-version }}
+        channel: ${{ inputs.channel }}
+    - run: flutter doctor -v
+      shell: bash

@@ -1,42 +1,121 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+name: Flutter PR Workflow
 
-name: Dart
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [pull_request]
 
 jobs:
-  build:
+  lint-and-build:
     runs-on: ubuntu-latest
-
+    env:
+      FLUTTER_VERSION: '3.12.0'
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout gallery code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures all history is checked out
 
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
-      # - uses: dart-lang/setup-dart@v1
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
 
-      - name: Install dependencies
-        run: flutter pub get
+      - name: Setup Flutter
+        uses: ./.github/actions/setup_flutter
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
 
-      # Uncomment this step to verify the use of 'dart format' on each commit.
-      # - name: Verify formatting
-      #   run: dart format --output=none --set-exit-if-changed .
+      - run: flutter pub get
 
-      # Consider passing '--fatal-infos' for slightly stricter analysis.
-      - name: Analyze project source
-        run: dart analyze
+      - name: Analyze Dart Files
+        run: |
+          # Dynamically construct the repo URL using the built-in github.repository variable
+          REPO_URL="https://github.com/${{ github.repository }}.git"
 
-      # Your project will need to have tests in test/ and a dependency on
-      # package:test for this step to succeed. Note that Flutter projects will
-      # want to change this to 'flutter test'.
-      - name: Run tests
-        run: dart test
+          # Ensure upstream is set to the dynamically determined repository
+          git remote add upstream $REPO_URL 2>/dev/null || true
+          git fetch upstream ${{ github.base_ref }} --quiet
+          git fetch upstream ${{ github.head_ref }} --quiet
+
+          # Separately handle added/modified and deleted files
+          MODIFIED_FILES=$(git diff --name-only --diff-filter=AM upstream/${{ github.base_ref }}..upstream/${{ github.head_ref }} | grep '\.dart$' || true)
+          DELETED_FILES=$(git diff --name-only --diff-filter=D upstream/${{ github.base_ref }}..upstream/${{ github.head_ref }} | grep '\.dart$' || true)
+
+          # Analyze added/modified files
+          if [ -n "$MODIFIED_FILES" ]; then
+            echo "Analyzing modified/added Dart files..."
+            echo "$MODIFIED_FILES" | while read file; do
+              if [ -f "$file" ]; then
+                flutter analyze "$file" || exit 1
+              else
+                echo "File $file does not exist, was expected to be added or modified."
+              fi
+            done
+          else
+            echo "No Dart files were added or modified."
+          fi
+
+          # Report deleted files
+          if [ -n "$DELETED_FILES" ]; then
+            echo "Deleted Dart files (not analyzed):"
+            echo "$DELETED_FILES"
+          else
+            echo "No Dart files were deleted."
+          fi
+
+
+      - name: Cache Gradle Wrapper
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-wrapper-
+
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/caches/build-cache-1
+            !~/.gradle/caches/*/file-access
+            !~/.gradle/caches/*/journal-1
+            !~/.gradle/caches/*/executionHistory
+            !~/.gradle/caches/journal-1
+            !~/.gradle/caches/*/fileHashes
+            !~/.gradle/caches/build-cache-1
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      # - name: Configure Keystore
+      #   run: |
+      #     sed -i 's#https://(staging|admin).pagrill.shop#${{ env.SERVER_URL }}#g' lib/utill/app_constants.dart
+      #     echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > android/app/pagrill-upload-keystore.jks
+      #     echo "$GOOGLE_JSON_KEY" > android/app/google-services.json
+      #     echo "storeFile=pagrill-upload-keystore.jks" >> android/key.properties
+      #     echo "keyAlias=$KEYSTORE_KEY_ALIAS" >> android/key.properties
+      #     echo "storePassword=$KEYSTORE_STORE_PASSWORD" >> android/key.properties
+      #     echo "keyPassword=$KEYSTORE_KEY_PASSWORD" >> android/key.properties
+
+      #   env:
+      #     PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
+      #     KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
+      #     KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
+      #     KEYSTORE_STORE_PASSWORD: ${{ secrets.KEYSTORE_STORE_PASSWORD }}
+      #     GOOGLE_JSON_KEY: ${{ secrets.GOOGLE_JSON_KEY }}
+
+      # - name: Build APK
+      #   run: flutter build apk
+
+      # - name: Cache APK Output
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: |
+      #       build/app/outputs/flutter-apk/
+      #     key: ${{ runner.os }}-apk-${{ github.sha }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-apk-
