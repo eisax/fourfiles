@@ -42,6 +42,7 @@ flutter:
     - assets/images/icons/
     - assets/images/icons/category-logo/
     - assets/images/icons/formats/
+    - assets/images/icons/more/
   fonts:
     - family: Roboto
       fonts:

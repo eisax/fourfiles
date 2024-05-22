@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fourfiles/controller/document_controller.dart';
 import 'package:fourfiles/util/dimensiona.dart';
 import 'package:fourfiles/util/images.dart';
 import 'package:fourfiles/view/screens/category/category_list_screen.dart';
 import 'package:get/get.dart';
 
-class CategoriesButton {
-  int id;
-  String title;
-  String route;
-  String icon;
 
-  CategoriesButton(
-      {required this.id,
-      required this.title,
-      required this.route,
-      required this.icon});
-}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,26 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   
   @override
   Widget build(BuildContext context) {
-    List<CategoriesButton> categories = [
-    CategoriesButton(
-        icon: Images.cat1, id: 0, title: 'Uncategorized', route: ''),
-    CategoriesButton(
-        icon: Images.cat2, id: 1, title: 'Driving License', route: ''),
-    CategoriesButton(icon: Images.cat3, id: 2, title: 'Insurance', route: ''),
-    CategoriesButton(icon: Images.cat4, id: 2, title: 'Passport', route: ''),
-    CategoriesButton(icon: Images.cat5, id: 2, title: 'Invoice', route: ''),
-    CategoriesButton(
-        icon: Images.cat6, id: 2, title: 'Personal Card', route: ''),
-    CategoriesButton(icon: Images.cat7, id: 2, title: 'Bank', route: ''),
-    CategoriesButton(icon: Images.cat8, id: 2, title: 'Medical', route: ''),
-    CategoriesButton(
-        icon: Images.cat9, id: 2, title: 'Business Card', route: ''),
-    CategoriesButton(icon: Images.cat10, id: 2, title: 'Contract', route: ''),
-    CategoriesButton(icon: Images.cat11, id: 2, title: 'Product', route: ''),
-    CategoriesButton(
-        icon: Images.cat12, id: 2, title: 'Electricity/Gas', route: ''),
-    CategoriesButton(icon: Images.cat13, id: 2, title: 'Bills', route: ''),
-  ];
+   return GetBuilder<DocumentController>(builder: (documentController) {
     return Scaffold(
       backgroundColor: const Color(0xFFf1f1f1),
       appBar: PreferredSize(
@@ -113,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: WrapAlignment.spaceEvenly,
                     runAlignment: WrapAlignment.spaceEvenly,
                     crossAxisAlignment: WrapCrossAlignment.end,
-                    children: categories
+                    children: documentController.categories
                         .map(
                           (category) => GestureDetector(
                             onTap: () {
@@ -182,5 +153,5 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
-  }
+  });}
 }

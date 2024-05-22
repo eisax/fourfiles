@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fourfiles/helper/route_helper.dart';
 import 'package:fourfiles/util/dimensiona.dart';
 import 'package:fourfiles/util/images.dart';
 import 'package:get/get.dart';
@@ -27,14 +28,6 @@ class MoreScreen extends StatefulWidget {
 class _MoreScreenState extends State<MoreScreen> {
   @override
   Widget build(BuildContext context) {
-    List<MoreItems> itemList = [
-      MoreItems(id: 0, icon: Images.profile, title: 'My Profile', route: ""),
-      MoreItems(id: 0, icon: Images.cloud, title: 'Manage Address', route: ""),
-      MoreItems(id: 0, icon: Images.cloud, title: 'Language', route: ""),
-      MoreItems(id: 0, icon: Images.cloud, title: 'Change Password', route: ""),
-      MoreItems(id: 0, icon: "", title: 'Terms & Conditions', route: ""),
-      MoreItems(id: 0, icon: Images.cloud, title: 'Privacy Policy', route: ""),
-    ];
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70),
@@ -74,57 +67,48 @@ class _MoreScreenState extends State<MoreScreen> {
                       Dimensions.radiusExtraLarge,
                     ),
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          Theme.of(context).primaryColor.withOpacity(0.75),
-                          Theme.of(context).primaryColor,
-                        ],
-                      ),
                       borderRadius: BorderRadius.circular(
-                        Dimensions.radiusDefault,
+                        Dimensions.radiusSmall,
                       ),
-                      color: Theme.of(context).primaryColor,
+                      color: Colors.white,
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          radius: Dimensions.paddingSizeExtraLarge,
-                          backgroundColor: Theme.of(context).hintColor,
-                          backgroundImage:
-                              AssetImage("assets/images/profile/profile.jpg"),
+                        Image.asset(
+                          Images.logo,
+                          height: 18,
                         ),
-                        SizedBox(
-                          width: Dimensions.paddingSizeDefault,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              "Audrey Goredema",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w400,
-                                  ),
+                            SizedBox(
+                              width: Dimensions.paddingSizeExtraSmall,
                             ),
                             Text(
-                              "audreyg@gmail.com",
+                              "four",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall
                                   ?.copyWith(
-                                    fontSize: 10,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: Dimensions.fontSizeDefault,
                                   ),
-                            )
+                            ),
+                            Text(
+                              "files",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: Dimensions.fontSizeDefault,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                            ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -133,109 +117,386 @@ class _MoreScreenState extends State<MoreScreen> {
                   margin: EdgeInsets.all(Dimensions.paddingSizeDefault),
                   decoration: BoxDecoration(
                       borderRadius:
-                          BorderRadius.circular(Dimensions.radiusDefault),
+                          BorderRadius.circular(Dimensions.radiusSmall),
                       color: Colors.white),
-                  padding: EdgeInsets.all(
-                    Dimensions.paddingSizeDefault,
-                  ),
                   child: Column(
-                    children: itemList
-                        .map(
-                          (MoreItems item) => GestureDetector(
-                            onTap: () => Get.toNamed(item.route),
-                            child: Container(
-                              margin: EdgeInsets.only(
-                                bottom: Dimensions.paddingSizeSmall,
-                              ),
-                              padding: EdgeInsets.all(
-                                Dimensions.paddingSizeDefault,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () => Get.toNamed(RouteHelper.categorytypelist),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(
-                                        item.icon,
-                                        color: Theme.of(context).primaryColor,
-                                        height: 20,
-                                      ),
-                                      SizedBox(
-                                        width: Dimensions.paddingSizeSmall,
-                                      ),
-                                      Text(
-                                        item.title,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
                                   SvgPicture.asset(
-                                    Images.cloud,
-                                    color: Theme.of(context).hintColor,
-                                    height: 20,
+                                    Images.category,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "Categories",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                   ),
                                 ],
                               ),
-                            ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
                           ),
-                        )
-                        .toList(),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(""),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.backup,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "Backup And Restore",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(""),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.moresettings,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "Settings",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(""),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.lock,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "App Lock",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(""),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.about,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "About fourfiles",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                ),
-                Divider(
-                  color: Theme.of(context).hintColor.withOpacity(0.1),
-                  thickness: Dimensions.paddingSizeDefault,
                 ),
                 Container(
                   margin: EdgeInsets.all(Dimensions.paddingSizeDefault),
                   decoration: BoxDecoration(
                       borderRadius:
-                          BorderRadius.circular(Dimensions.radiusDefault),
+                          BorderRadius.circular(Dimensions.radiusSmall),
                       color: Colors.white),
-                  padding: EdgeInsets.all(
-                    Dimensions.paddingSizeDefault,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
                     children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            Images.cloud,
-                            color: Colors.red,
-                            height: 20,
+                      GestureDetector(
+                        onTap: () => Get.toNamed(""),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
                           ),
-                          SizedBox(
-                            width: Dimensions.paddingSizeSmall,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.starShine,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "Rate the app",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
                           ),
-                          Text(
-                            "Log out",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall
-                                ?.copyWith(
-                                  fontWeight: FontWeight.w400,
-                                ),
-                          ),
-                        ],
+                        ),
                       ),
-                      SvgPicture.asset(
-                        Images.cloud,
-                        color: Theme.of(context).hintColor,
-                        height: 20,
+                      GestureDetector(
+                        onTap: () => Get.toNamed(""),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.share,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "Share App",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ),
                       ),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(""),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.shieldInfo,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "Privacy Policy",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(""),
+                        child: Container(
+                          padding: EdgeInsets.all(
+                            Dimensions.paddingSizeDefault,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.termsOfService,
+                                    color: Theme.of(context).primaryColor,
+                                    height: 18,
+                                  ),
+                                  SizedBox(
+                                    width: Dimensions.paddingSizeSmall,
+                                  ),
+                                  Text(
+                                    "Terms of Service",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Theme.of(context).hintColor,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
-                Divider(
-                  color: Theme.of(context).hintColor.withOpacity(0.1),
-                  thickness: Dimensions.paddingSizeExtraLarge,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Version 1.0.0",
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: Theme.of(context).hintColor
+                          ),
+                    ),
+                  ],
                 ),
               ],
             ),

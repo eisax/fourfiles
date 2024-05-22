@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:fourfiles/controller/auth_controller.dart';
-import 'package:fourfiles/controller/survey_controller.dart';
+import 'package:fourfiles/controller/document_controller.dart';
 import 'package:fourfiles/data/FourFilesDB.dart';
 import 'package:fourfiles/data/api/api_client.dart';
 import 'package:fourfiles/data/repository/auth_repo.dart';
@@ -32,7 +32,7 @@ Future<Map<String, Map<String, String>>> init() async {
   // Controller
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
   Get.lazyPut(() => AuthController(  apiClient: Get.find(), authRepo: Get.find()));
-  Get.lazyPut(() => SurveyController(  apiClient: Get.find(), surveyRepo: Get.find()));
+  Get.lazyPut(() => DocumentController(  apiClient: Get.find(), surveyRepo: Get.find()));
  
 
   Map<String, Map<String, String>> languages = {};
