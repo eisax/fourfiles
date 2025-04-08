@@ -446,7 +446,7 @@ class _CreateFileScreenState extends State<CreateFileScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   AddItemDialog(
-                                    hint: '',
+                                    hint: "",
                                   )
                                 ],
                               ),
